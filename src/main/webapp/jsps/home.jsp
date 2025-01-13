@@ -29,7 +29,7 @@
 					+1 (289) 257-6694,
 					frank.takang@gmail.com
 					<br>
-					<a href="mailto:fewaitconsulting@gmail.com">Mail to FEWA IT CONSULTING</a>
+					<a href="mailto:fewaitconsulting@yahoo.ca">Mail to FEWA IT CONSULTING</a>
 				</span>
 			</div>
 		<hr>
