@@ -21,7 +21,7 @@
 		<spring.version>5.1.2.RELEASE</spring.version>
 		<junit.version>4.11</junit.version>
 		<log4j.version>1.2.17</log4j.version>
-		<sonar.host.url>http://54.161.126.164:9000</sonar.host.url>
+		<sonar.host.url>http://52.91.42.89:9000</sonar.host.url>
 		<sonar.login>admin</sonar.login>
 		<sonar.password>eeNigeriacameroon92@</sonar.password>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -91,13 +91,13 @@
 	    <repository>
 	      <id>nexus</id>
 	      <name>FEWA IT CONSULTING Releases Nexus Repository</name>
-	      <url>http://3.84.202.184:8081/repository/fewa-release/</url>
+	      <url>http://52.91.41.94:8081/repository/fewa-release/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>FEWA IT CONSULTING Snapshot Nexus Repository </name>
-	      <url>http://3.84.202.184:8081/repository/fewa-snapshot/</url>
+	      <url>http://52.91.41.94:8081/repository/fewa-snapshot/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
