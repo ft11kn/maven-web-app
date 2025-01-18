@@ -1,0 +1,44 @@
+node {
+    // Define the Maven tool version
+    // Replace 'mavenversion' with the configured Maven version in Jenkins (e.g., maven3.9.9).
+    def mavenHome = tool name: 'maven3.9.9'
+
+    stage('1 Get Code') {
+        echo 'Cloning the latest application version'
+        // Replace with the appropriate Git repository URL and branch name.
+        git branch: 'main', url: 'https://github.com/ft11kn/maven-web-app'
+    }
+
+    stage('2 Test + Build') {
+        echo 'Running JUnit test cases'
+        echo 'Tests must pass to create artifacts'
+        // Use Maven to clean and package the project
+        sh "${mavenHome}/bin/mvn clean package"
+    }
+
+    stage('3 Code Quality') {
+        echo 'Performing Code Quality Analysis'
+        // Run SonarQube analysis. Ensure SonarQube is configured in Jenkins.
+        sh "${mavenHome}/bin/mvn sonar:sonar"
+    }
+
+    stage('4 Upload to Nexus') {
+        echo 'Uploading artifacts to Nexus repository'
+        // Deploy artifacts to Nexus. Ensure Nexus configuration is in the 'pom.xml'.
+        sh "${mavenHome}/bin/mvn deploy"
+    }
+
+    stage('5 Deploy to UAT') {
+        echo 'Deploying artifacts to UAT'
+        deploy adapters: [tomcat9(credentialsId: '0c6a3cf3-b1bf-4581-b9b9-30d52bf0cb5d', path: '', url: 'http://98.82.170.56:8177/manager/html')], contextPath: null, war: 'target/*.war'
+        sh "echo 'Replace this line with the actual deployment script'"
+    }
+    stage('8 Email Notification') {
+        emailext body: 'The build was successful', subject: 'Build status', to: 'frank.takang@yahoo.ca'
+        sh "echo 'Sending Email Notifications'"
+    }
+
+    // Post actions
+    echo 'Pipeline execution completed'
+    currentBuild.result = 'SUCCESS'
+}
